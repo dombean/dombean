@@ -2,11 +2,11 @@
 
 ### Hi, I'm Dominic 👋
 
-Data Scientist based in Manchester, England. This is the public, PII-free copy of my
-CV, rebuilt automatically from LaTeX each time I update it.
+Data Scientist -- and, just as much, a Data Engineer -- based in Manchester, England.
+I build production-grade data pipelines with software engineering best practices baked in:
+testing, CI/CD, and reproducibility.
 
-**Tech I work with:** Python & PySpark for distributed data pipelines, SQL on Hive/Impala,
-and cloud-native delivery on AWS and GCP with Docker, Terraform, and CI/CD.
+**Tech I reach for:** Python · PySpark · SQL · AWS · GCP · Docker · Terraform · CI/CD
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?logo=r&logoColor=white)
