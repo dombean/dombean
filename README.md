@@ -1,6 +1,6 @@
 ![Dominic Bean](https://raw.githubusercontent.com/dombean/dombean/main/profile.png)
 
-### Hi, I'm Dominic 👋
+### Hi, I'm Dom 👋
 
 Data Scientist -- and, just as much, a Data Engineer -- based in Manchester, England.
 I build production-grade data pipelines with software engineering best practices baked in:
