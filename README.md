@@ -2,15 +2,24 @@
 
 ### Hi, I'm Dom 👋
 
-Data Scientist -- and, just as much, a Data Engineer -- based in Manchester, England.
-I build production-grade data pipelines with software engineering best practices baked in:
-testing, CI/CD, and reproducibility.
+I'm a Data Engineer in Manchester. At Betfred I'm helping move a legacy SQL Server
+warehouse onto an AWS lakehouse: PySpark on Glue, Apache Iceberg, Redshift and change data
+capture.
 
-**Tech I reach for:** Python · PySpark · SQL · AWS · GCP · Docker · Terraform · CI/CD
+Before that, I spent five years at the Office for National Statistics building the
+pipelines behind UK trade, regional GVA and household income statistics. I led a data
+engineering team there and maintained [`rdsa-utils`](https://github.com/ONSdigital/rdsa-utils),
+an open-source toolkit used across the ONS.
+
+I care about data people can trust: tested code, automated deployments, and documentation
+that keeps up with the code.
+
+**Working with:** Python · PySpark · SQL · AWS Glue · Apache Iceberg · Redshift · Terraform
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R-276DC3?logo=r&logoColor=white)
 ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white)
+![Apache Iceberg](https://img.shields.io/badge/Apache%20Iceberg-4E8EE9)
 ![SQL](https://img.shields.io/badge/SQL-025E8C)
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
