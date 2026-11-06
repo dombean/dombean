@@ -8,7 +8,7 @@ capture.
 
 Before that, I spent five years at the Office for National Statistics building the
 pipelines behind UK trade, regional GVA and household income statistics. I led a data
-engineering team there and maintained [`rdsa-utils`](https://github.com/ONSdigital/rdsa-utils),
+engineering team there and maintained [`rdsa-utils`](https://pypi.org/project/rdsa-utils/),
 an open-source toolkit used across the ONS.
 
 I care about data people can trust: tested code, automated deployments, and documentation
