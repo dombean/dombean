@@ -1,42 +1,59 @@
 # Profile Banner
 
-`profile.png` (repo root) is the banner at the top of my GitHub profile: white text on a blue
-patterned background, set in **Red Hat Display**. The text is part of the image, so changing it
-means editing pixels. [`retitle_banner.py`](retitle_banner.py) does that cleanly.
+`profile.png` (repo root) is the banner at the top of my GitHub profile. It's drawn by
+[`make_banner.py`](make_banner.py) at 3x size (2874x627) from the design in
+[`pattern.json`](pattern.json), so it stays sharp on high-DPI screens.
 
-## What the Script Does
+## Changing the Text
 
-1. Finds the old text inside a band of rows (by default the subtitle, rows 120-170).
-2. Fits the font's weight, size and position to the existing pixels.
-3. Inpaints the old text away, so the background lines carry on through.
-4. Draws the new text with the fitted settings, centred where the old text was centred and on the
-   same baseline.
-
-Only the text area changes. The rest of the image, including the transparent rounded corners, is
-left exactly as it was.
-
-## Usage
-
-Get the font (OFL-licensed, from the official Google Fonts repo). It is not committed here:
+Get the font (OFL-licensed, from the official Google Fonts repo). It isn't committed here:
 
 ```bash
 curl -sSfL -o /tmp/RedHatDisplay.ttf "https://raw.githubusercontent.com/google/fonts/main/ofl/redhatdisplay/RedHatDisplay%5Bwght%5D.ttf"
 ```
 
-Run from the repo root. `uv` reads the dependencies from the script header:
+Then, from the repo root (`uv` reads the dependencies from the script header):
 
 ```bash
-uv run banner/retitle_banner.py profile.png profile.png --font /tmp/RedHatDisplay.ttf --old "Data Engineer" --new "Senior Data Engineer"
+uv run banner/make_banner.py profile.png --font /tmp/RedHatDisplay.ttf --subtitle "Data Engineer"
 ```
 
-- `--old` must match the text on the banner exactly.
-- `--band TOP BOTTOM` picks a different line: the name sits at roughly rows 60-110.
-- Check the result before committing: zoom in on the text and compare with the previous version
-  (`git show HEAD:profile.png > /tmp/old.png`).
+| Option | Default | What it does |
+| --- | --- | --- |
+| `--title` | `Dominic Bean` | First line |
+| `--subtitle` | `Data Engineer` | Second line |
+| `--scale` | `3` | Size relative to the 958x209 original |
+| `--supersample` | `4` | Anti-aliasing: everything is drawn this much bigger, then averaged down |
+
+Both lines are centred, so text of any length works.
+
+## Where the Design Comes From
+
+The 2022 banner came from an online generator as a 958x209 PNG with no source file, which is
+why it looked soft on high-DPI screens. [`extract_pattern.py`](extract_pattern.py) recovered it
+as geometry, once:
+
+- **Background:** flat `#2C82C0`, 8px rounded corners.
+- **Network pattern:** 37 visible dots, 3 more hidden behind the name, and 154 lines (including
+  those that run off the edges). Lines are 1.6px wide at about 5% white; dots have a 1.55px
+  radius at about 28% white. Widths and opacities were calibrated by rendering and comparing.
+- **Text:** Red Hat Display. The name is weight 400 at 41.8px; the subtitle weight 392 at
+  20.9px.
+
+Check: rendered at 1x with the original "Data Scientist" subtitle, the redraw matches the 2022
+banner to within 0.11 (out of 255) on average across the pattern.
+
+To re-run the extraction (only needed if the design is lost or changed):
+
+```bash
+git show 15348b6:profile.png > /tmp/original.png
+uv run banner/extract_pattern.py /tmp/original.png banner/pattern.json --font /tmp/RedHatDisplay.ttf
+```
 
 ## History
 
 | Date | Change |
 | --- | --- |
-| 2022-09-27 | Banner added ("Dominic Bean" / "Data Scientist") |
-| 2026-11-06 | Subtitle changed to "Data Engineer" with this script. Fitted: weight 350, 21px |
+| 2022-09-27 | Banner added ("Dominic Bean" / "Data Scientist"), 958x209 |
+| 2026-11-06 | Subtitle changed to "Data Engineer" by editing the pixels |
+| 2026-11-06 | Redrawn from recovered geometry at 3x (2874x627) to fix the blur |
